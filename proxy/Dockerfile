@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER Chris Brantley
+MAINTAINER Wiota Co
 
 RUN apt-get update
 RUN apt-get install -y nginx vim inotify-tools

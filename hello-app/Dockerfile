@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER Chris Brantley
+MAINTAINER Wiota Co
 
 COPY /src /opt/hello-app/
 

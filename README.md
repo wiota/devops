@@ -1,28 +1,45 @@
 # Wiota Co Dev Environment
 
+## First time setup:
+
+1. Install the Docker Toolbox: <https://docs.docker.com/engine/installation/mac/>
+
+2. Install Gas Mask: <https://github.com/2ndalpha/gasmask>
+
+3. Set up a Gas Mask config for `/etc/hosts` with entries such as:
+
+    ```
+    192.168.99.100    www.example.com
+    192.168.99.100    static.example.com
+    192.168.99.100    lime.local
+    192.168.99.100    hello.local
+    192.168.99.100    goodbye.local
+    ```
+
+    You will need a `example.com` for every Facade host.
+
 ## To start:
 
-1. Copy the Facade `.env` file into `./facade`
-2. Use [gasmask]() to configure `/etc/hosts` with entries such as:
+1. Switch to the Gas Mask configuration.
 
-    192.168.50.100    www.example.com
-    192.168.50.100    static.example.com
+2. Ensure that the default `docker-machine` is running:
 
-3. Run `vagrant up`
+    ```
+    docker-machine start default
+    ```
 
-## To develop:
-In this directory:
+    (This needs done every time the host machine is restarted)
 
-    $ vagrant ssh-config >> ~/.ssh/config
+3. Ensure that the proper environment vars are set:
 
-In the Facade git repo:
+    ```
+    eval "$(docker-machine env default)"
+    ```
 
-    $ git add remote vagrant vagrant@default:/vagrant/facade/facade.git
+    (This needs done once per terminal session)
 
-After making a change:
+4. Run `make serve`
 
-    $ git checkout -b new_feature_branch
-    $ git commit -am "Here's a new feature"
-    $ git push vagrant HEAD:master
+5. Lime is available at <http://lime.local>
 
-Automatically deployed.
+_Note_: This assumes that our other Git repos are at `../lime`, `../facade`, etc. To develop, make changes in these repos directly. Docker will automatically reload on changes.

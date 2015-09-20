@@ -1,5 +1,2 @@
 .vagrant
-.env
-
-facade/facade
-facade/facade.git
+.state

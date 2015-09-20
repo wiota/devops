@@ -2,29 +2,36 @@ helloapp:
   build: ./hello-app
   command: "python hello.py"
   volumes:
-    - /vagrant/hello-app/src:/opt/hello-app
+    - ./hello-app/src:/opt/hello-app
 
 goodbyeapp:
   build: ./goodbye-app
   command: "python goodbye.py"
   volumes:
-    - /vagrant/goodbye-app/src:/opt/goodbye-app
+    - ./goodbye-app/src:/opt/goodbye-app
+
+lime:
+  build: ../lime
+  command: "python app.py"
+  env_file: ../lime/.env
+  volumes:
+    - ../lime:/opt/lime
 
 facade:
-  build: ./facade
-  command: "foreman start"
-  env_file: ./facade/.env
+  build: ../facade
+  command: "python app.py"
+  env_file: ../facade/.env
   volumes:
-    - /vagrant/facade/facade.git:/opt/facade.git
-    - /vagrant/facade/facade:/opt/facade
+    - ../facade:/opt/facade
 
 proxy:
   build: ./proxy
   ports:
     - "80:80"
   volumes:
-    - /vagrant/proxy/sites-enabled:/etc/nginx/sites-enabled
+    - ./proxy/sites-enabled:/etc/nginx/sites-enabled
   links:
     - helloapp
     - goodbyeapp
     - facade
+    - lime
