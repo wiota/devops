@@ -4,7 +4,7 @@ default:
 	@echo "Must call a specific subcommand"
 	@exit 1
 
-.state/docker-build: ../lime/Dockerfile ../facade/Dockerfile
+.state/docker-build: ../lime/Dockerfile ../facade/Dockerfile ../trowel/Dockerfile
 	# Build our docker containers for this project.
 	docker-compose build
 
@@ -20,7 +20,7 @@ build:
 	mkdir -p .state
 	touch .state/docker-build
 
-serve: .state/docker-build ../lime/.env ../facade/.env
+serve: .state/docker-build ../lime/.env ../facade/.env ../trowel/.env
 	docker-compose up
 
 .PHONY: default build serve initdb shell tests docs clean purge update-requirements

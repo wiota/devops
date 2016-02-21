@@ -18,6 +18,12 @@
 
     You will need a `example.com` for every Facade host.
 
+4. Clone this repo:
+
+   ```
+   git clone git@github.com:wiota/devops.git
+   ```
+
 ## To start:
 
 1. Switch to the Gas Mask configuration.
@@ -37,6 +43,12 @@
     ```
 
     (This needs done once per terminal session)
+
+4. Put yourself into the devops directory:
+
+   ```
+   cd devops
+   ```
 
 4. Run `make serve`
 

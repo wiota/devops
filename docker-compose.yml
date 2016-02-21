@@ -24,6 +24,13 @@ facade:
   volumes:
     - ../facade:/opt/facade
 
+trowel:
+  build: ../trowel
+  command: "python app.py"
+  env_file: ../trowel/.env
+  volumes:
+    - ../trowel:/opt/trowel
+
 proxy:
   build: ./proxy
   ports:
@@ -35,3 +42,4 @@ proxy:
     - goodbyeapp
     - facade
     - lime
+    - trowel
